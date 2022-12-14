@@ -183,7 +183,8 @@ You can run the frontend application manually by executing the following command
 from the repository:
 
 ```bash
-$> npm start
+cd frontend
+npm start
 ```
 
 > The frontend application runs on port 4200 by default. If that port is already
@@ -198,6 +199,7 @@ $> npm start
 > passes options through, for example:
 >
 > ```bash
+> cd frontend
 > npm start -- --host 0.0.0.0 --port 3000
 > ```
 >
