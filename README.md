@@ -126,7 +126,7 @@ suite][automated-tests]:
     ```bash
     export FLOODIT_TEST_DATABASE_HOST=localhost
     export FLOODIT_TEST_DATABASE_PORT=5432
-    export FLOODIT_TEST_DATABASE_NAME=floodit
+    export FLOODIT_TEST_DATABASE_NAME=floodit-test
     export FLOODIT_TEST_DATABASE_USERNAME=floodit
     export FLOODIT_TEST_DATABASE_PASSWORD=mysecretpassword
     ```
