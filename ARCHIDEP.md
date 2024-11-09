@@ -82,27 +82,26 @@ It has two components: a [backend and a frontend][frontend-and-backend]:
   that provides the [Graphical User Interface (GUI)][gui]. It makes [AJAX
   requests][ajax] to the backend.
 
-### :books: What the hell are Spring Boot & Angular?
+### :books: What the hell are Spring Boot, Angular & PostgreSQL?
 
 The application uses the following ~~buzzword salad~~ technologies:
 
 - The backend has been developed with [Spring Boot][spring-boot], a Java
   framework that makes it easy to create stand-alone, production-grade Spring
   based Applications that you can "just run".
-  - [Spring][spring] makes programming Java quicker, easier, and safer for
-    everybody. Spring's focus on speed, simplicity, and productivity has made it
-    the world's most popular Java framework.
   - [Java][java] is a popular programming language and development platform. It
     reduces costs, shortens development timeframes, drives innovation, and
     improves application services. With millions of developers running more than
     60 billion Java Virtual Machines worldwide, Java continues to be the
     development platform of choice for enterprises and developers.
+  - [Spring][spring] makes programming Java quicker, easier, and safer for
+    everybody. Spring's focus on speed, simplicity, and productivity has made it
+    the world's most popular Java framework.
 - The frontend has been developed with [Angular][angular], a [JavaScript][js]
   application-design framework and development platform for creating efficient
-  and sophisticated single-page apps.
-
-  It also uses [Tailwind][tailwind], a utility-first CSS framework packed with
-  classes that can be composed to build any design, directly in your markup.
+  and sophisticated single-page apps. It also uses [Tailwind][tailwind], a
+  utility-first CSS framework packed with classes that can be composed to build
+  any design, directly in your markup.
 
 - [PostgreSQL][postgres] is a powerful, open source object-relational database
   system with over 30 years of active development that has earned it a strong
@@ -117,9 +116,8 @@ deployment.
 
 **Your Azure server has limited memory (about 1GB of RAM).** Unfortunately, this
 may not be enough memory to run the MySQL database server, the PostgreSQL
-database server, PHP-FPM, the PHP todolist and the Flood It application,
-mainly because MySQL unfortunately consumes a lot of memory for such a small
-server.
+database server, PHP-FPM, the PHP todolist and the Flood It application all at
+the same time.
 
 Make sure that you have added enough memory [swap
 space](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-swapspace.html)
@@ -181,27 +179,23 @@ described in the [project's README][readme] on your server:
   You should install a package named `openjdk-<version>-jdk` where `<version>`
   is the Java version required by the Flood It application.
 
-- **How to install Maven:**
-Unfortunetly the version of Maven available from apt is not compatible with Java 17.
-We will therefore install a newer version, using a script located in the floodit repo. So if you have yet to clone your fork, now's a good time.
+- **How to install Maven:** Depending on your Ubuntu version, the version of
+  Maven available from APT might not be compatible with Java 17. You will
+  therefore install a newer version, using a script located in the Flood It
+  application's repository.
 
-  - Run the `install-maven.sh` script:
+  Download and run the [`maven-install.sh`
+  script](https://github.com/MediaComem/floodit/blob/main/maven-install.sh) from
+  the Flood It repository:
 
-    ```bash
-    $> cd floodit
-    $> sudo sh maven-install.sh && source /etc/profile.d/maven.sh
-    ```
+  ```bash
+  $> curl -s https://raw.githubusercontent.com/MediaComem/floodit/main/maven-install.sh | sudo bash
+  $> source /etc/profile.d/maven.sh
+  ```
 
-  - Check the script has worked properly.
+  > :gem: If you prefer not to run a strange script from the Internet on your
+  > server, you can also read the script and execute the commands yourself.
 
-    ```bash
-    $> mvn -v
-    Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
-    Maven home: /opt/maven
-    Java version: 17.0.5, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
-    Default locale: en, platform encoding: UTF-8
-    OS name: "linux", version: "5.15.0-1023-azure", arch: "amd64", family: "unix"
-    ```
 - **How to install Node.js:** there are several methods to install Node.js. One
   of the simplest is to use the [binary distributions provided by
   NodeSource][node-install]. You should look for installation instructions
@@ -233,11 +227,11 @@ We will therefore install a newer version, using a script located in the floodit
   version of the `mvn` command:
 
   ```bash
-  $> mvn --version
-  Apache Maven 3.6.3
-  Maven home: /usr/share/maven
+  $> mvn -version
+  Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
+  Maven home: /opt/maven
   Java version: 17.0.5, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
-  Default locale: en_US, platform encoding: UTF-8
+  Default locale: en, platform encoding: UTF-8
   OS name: "linux", version: "5.15.0-1023-azure", arch: "amd64", family: "unix"
   ```
 
@@ -325,19 +319,20 @@ README][readme].
 
 :warning: Since you will need to commit and push changes later, **do not** use
 the `https://github.com/MediaComem/floodit.git` URL to clone the repository as
-suggested in the README. **Use your own fork's HTTPS clone URL**.
+suggested in the README. That repository belongs to the school. **Use your own
+fork's HTTPS clone URL**.
 
-> - :gem: When you reach the step where you need to "Configure the application",
->   you will see that the Flood It application has two configuration mechanisms:
->   environment variables or a local configuration file. You can use either one
->   of them. It does not matter which you choose. Both are equally valid way of
->   configuring the application.
+> :gem: When you reach the step where you need to "Configure the application",
+> you will see that the Flood It application has two configuration mechanisms:
+> environment variables or a local configuration file. You can use either one of
+> them. It does not matter which you choose. Both are equally valid way of
+> configuring the application.
 >
->   If you choose to use environment variables, you will need to provide these
->   environment variables through Systemd later, as you have done with the PHP
->   todolist. The `export` sample commands provided in the README are only
->   examples and will only set the variables in the shell and SSH session where
->   you run them.
+> If you choose to use environment variables, you will need to provide these
+> environment variables through Systemd later, as you have done with the PHP
+> todolist. The `export` sample commands provided in the README are only
+> examples and will only set the variables in the shell and SSH session where
+> you run them.
 
 ### :books: What sorcery is this?
 
@@ -348,7 +343,7 @@ Read this section if you want to understand what you have done/installed so far.
 The backend of the Flood It application is written in Java.
 
 When you write a program in Java, your source code is compiled to produce [byte
-code][java-byte-code] that can be run in a [Java Virtual Machine (JVM)][jvm].
+code][java-bytecode] that can be run in a [Java Virtual Machine (JVM)][jvm].
 This is what makes Java [cross-platform][cross-platform]: any system that has a
 JVM can run Java byte code compiled on any other system. There are JVM
 implementations for all major operating systems and processor architectures.
@@ -394,7 +389,8 @@ you executed when first deploying the PHP todolist.
 
 If you prefer using SQL, you could instead connect to the database as the
 `postgres` user (equivalent to MySQL's `root` user) with `sudo -u postgres psql`
-and run equivalent [`CREATE USER`](https://www.postgresql.org/docs/13/sql-createuser.html) and [`CREATE DATABASE`](https://www.postgresql.org/docs/13/sql-createdatabase.html) queries.
+and run equivalent [`CREATE USER`](https://www.postgresql.org/docs/current/sql-createuser.html) and [`CREATE DATABASE`](https://www.postgresql.org/docs/current/sql-createdatabase.html)
+queries.
 
 Note that on the command line, PostgreSQL uses [peer
 authentication](https://www.postgresql.org/docs/13/auth-peer.html) based on the
@@ -419,20 +415,19 @@ project management tool for the [Java][java] ecosystem, much like
     framework. Spring Boot is a web framework written in [Java][java] much
     like [Laravel][laravel] is a web framework written in [PHP][php].
 
-    The dependencies are downloaded from [Maven Central][mvn-central],
-    the main package registry for the Elixir and Erlang ecosystems, and saved into the
-    `deps` directory.
+    The dependencies are downloaded from [Maven Central][mvn-central], the main
+    package registry for the Java ecosystem, and saved into the `~/.m2`
+    directory (in your home directory).
 
-  - Build the application (i.e. compile the Java source code into Java Virtual
-    Machine bytecode).
+  - Build the application (i.e. compile the Java source code into JVM bytecode).
   - Install the application into the local Maven repository.
 
 #### :books: Node.js
 
 [Node.js][node] is an open-source, cross-platform JavaScript runtime
-environment. Where JavaScript was traditionally run in a browser, Node.js allows
-you to run JavaScript code on any machine, like on your Azure VM, just like you
-would any other dynamic programming language like PHP, Ruby or Python.
+environment. Where JavaScript could traditionally only run in a browser, Node.js
+allows you to run JavaScript code on any machine, like on your Azure VM, just
+like you would any other dynamic programming language like PHP, Ruby or Python.
 
 #### :books: The `npm` command
 
@@ -525,14 +520,10 @@ should be able to visit http://W.X.Y.Z:3001 to check that the application works
 (replacing `W.X.Y.Z` by your server's IP address). Stop both components by
 typing `Ctrl-C` once you are done.
 
-TODO: explain development mode architecture
-
 ### :exclamation: Run the application in production mode
 
 Follow the instructions in the [project's README][readme] to run the application
 in production mode.
-
-TODO: explain production mode architecture
 
 > :books: To run a Maven project in production, you must install it (i.e. the
 > `mvn clean install` command), which will create a JAR file.. This is basically
@@ -600,7 +591,8 @@ contains the application's public web assets.
 >   exercise make no sense for a non-PHP application. You should replace them
 >   with a [`proxy_pass`
 >   directive](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass).
->   as [presented during the course][nginx-rp-conf].
+>   as [presented during the course][nginx-rp-conf] and as you have done in the
+>   [multi-component exercise](https://github.com/MediaComem/comem-archidep/blob/main/ex/revprod-deployment.md).
 > - :space_invader: You can also point the nginx configuration directly to the
 >   automated deployment structure. That way you will not have to modify it
 >   later.
@@ -725,12 +717,12 @@ Here's some visible changes you could easily make:
 
 - Change the [navbar title in the
   `frontend/src/app/layout/navbar/navbar.component.html`
-  file](https://github.com/AlphaHydrae/floodit/blob/04cf2bdad154aae574d974d7984d8d19e4dcb504/frontend/src/app/layout/navbar/navbar.component.html#L3).
+  file](https://github.com/MediaComem/floodit/blob/04cf2bdad154aae574d974d7984d8d19e4dcb504/frontend/src/app/layout/navbar/navbar.component.html#L3).
 - Change the [difficulty levels in the
   `frontend/src/app/pages/dashboard/dashboard.component.html`
-  file](https://github.com/AlphaHydrae/floodit/blob/04cf2bdad154aae574d974d7984d8d19e4dcb504/frontend/src/app/pages/dashboard/dashboard.component.html#L7-L38).
+  file](https://github.com/MediaComem/floodit/blob/04cf2bdad154aae574d974d7984d8d19e4dcb504/frontend/src/app/pages/dashboard/dashboard.component.html#L7-L38).
 
-## :exclamation: Notify the teacher
+## :exclamation: Notify the teachers
 
 Send an email or a Teams message to both teachers **no later than December 13th
 2022 at 23:59 CET** indicating that you have finished the exercise.
