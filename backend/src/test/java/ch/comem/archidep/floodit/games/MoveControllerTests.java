@@ -42,21 +42,23 @@ class MoveControllerTests extends AbstractControllerTests {
     var game = mockGameFound(requestBody.gameId());
 
     var result = GameFixtures.moveDto();
-    when(this.gameService.play(anyString(), any(PlayDto.class)))
-      .thenReturn(result);
+    when(this.gameService.play(anyString(), any(PlayDto.class))).thenReturn(
+      result
+    );
 
     perform(
-      playMoveRequest(requestBody)
-        .header(
-          HttpHeaders.AUTHORIZATION,
-          String.format("Bearer %s", game.getSecret())
-        )
+      playMoveRequest(requestBody).header(
+        HttpHeaders.AUTHORIZATION,
+        String.format("Bearer %s", game.getSecret())
+      )
     )
       .andExpect(status().isCreated())
       .andExpect(content().json(serialize(result)));
 
-    verify(this.gameService, times(1))
-      .play(eq(game.getSecret()), any(PlayDto.class));
+    verify(this.gameService, times(1)).play(
+      eq(game.getSecret()),
+      any(PlayDto.class)
+    );
   }
 
   @Test

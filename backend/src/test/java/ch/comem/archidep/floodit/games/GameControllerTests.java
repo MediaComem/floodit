@@ -37,8 +37,9 @@ class GameControllerTests extends AbstractControllerTests {
     var requestBody = GameFixtures.createGameDto();
 
     var result = GameFixtures.createdGameDto();
-    when(this.gameService.createGame(any(CreateGameDto.class)))
-      .thenReturn(result);
+    when(this.gameService.createGame(any(CreateGameDto.class))).thenReturn(
+      result
+    );
 
     perform(createGameRequest(requestBody))
       .andExpect(status().isCreated())

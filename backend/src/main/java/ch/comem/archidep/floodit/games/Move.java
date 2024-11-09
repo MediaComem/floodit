@@ -63,10 +63,8 @@ public class Move implements Comparable<Move> {
 
   @Override
   public boolean equals(Object obj) {
-    return ObjectUtils.equals(
-      this,
-      obj,
-      (builder, otherMove) -> builder.append(this.id, otherMove.id)
+    return ObjectUtils.equals(this, obj, (builder, otherMove) ->
+      builder.append(this.id, otherMove.id)
     );
   }
 

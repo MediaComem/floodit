@@ -64,13 +64,10 @@ public class Position {
 
   @Override
   public boolean equals(Object obj) {
-    return ObjectUtils.equals(
-      this,
-      obj,
-      (builder, otherPosition) ->
-        builder
-          .append(this.column, otherPosition.column)
-          .append(this.row, otherPosition.row)
+    return ObjectUtils.equals(this, obj, (builder, otherPosition) ->
+      builder
+        .append(this.column, otherPosition.column)
+        .append(this.row, otherPosition.row)
     );
   }
 

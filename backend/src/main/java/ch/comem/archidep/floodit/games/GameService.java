@@ -107,22 +107,19 @@ public class GameService {
   }
 
   private List<List<Integer>> generateBoard(Board board) {
-    return IntStream
-      .range(0, board.getHeight())
+    return IntStream.range(0, board.getHeight())
       .mapToObj(row -> this.generateRow(board, row))
       .toList();
   }
 
   private List<Integer> generateRow(Board board, int row) {
-    return IntStream
-      .range(0, board.getWidth())
+    return IntStream.range(0, board.getWidth())
       .mapToObj(column -> board.getColor(Position.at(column, row)))
       .collect(Collectors.toList());
   }
 
   private Game loadGame(Long gameId) {
-    return this.gameRepository.findById(gameId)
-      .orElseThrow(() ->
+    return this.gameRepository.findById(gameId).orElseThrow(() ->
         new IllegalStateException(
           String.format(
             "Could not find game with ID %s in the database",

@@ -186,12 +186,9 @@ class GameServiceTests extends AbstractServiceTests {
     var game = this.gameFixtures.game();
     var nonExistentId = game.getId() + 1;
 
-    var exception = assertThrows(
-      ResponseStatusException.class,
-      () -> {
-        this.gameService.getGame(nonExistentId);
-      }
-    );
+    var exception = assertThrows(ResponseStatusException.class, () -> {
+      this.gameService.getGame(nonExistentId);
+    });
 
     assertThat(exception.getStatusCode(), is(HttpStatus.NOT_FOUND));
   }
@@ -223,12 +220,9 @@ class GameServiceTests extends AbstractServiceTests {
     var game = this.gameFixtures.game();
     var nonExistentId = game.getId() + 1;
 
-    var exception = assertThrows(
-      ResponseStatusException.class,
-      () -> {
-        this.gameService.getGameBoard(nonExistentId);
-      }
-    );
+    var exception = assertThrows(ResponseStatusException.class, () -> {
+      this.gameService.getGameBoard(nonExistentId);
+    });
 
     assertThat(exception.getStatusCode(), is(HttpStatus.NOT_FOUND));
   }
@@ -269,8 +263,7 @@ class GameServiceTests extends AbstractServiceTests {
       assertThat(createdMove, isA(Move.class));
       assertThat(createdMove.getId(), is(greaterThanOrEqualTo(1L)));
       assertThat(
-        Optional
-          .ofNullable(createdMove.getGame())
+        Optional.ofNullable(createdMove.getGame())
           .map(Game::getId)
           .orElse(null),
         is(equalTo(game.getId()))
@@ -412,9 +405,8 @@ class GameServiceTests extends AbstractServiceTests {
 
     var wrongSecret = game.getSecret() + "foo";
 
-    assertThrows(
-      GameForbidden.class,
-      () -> this.gameService.play(wrongSecret, dto)
+    assertThrows(GameForbidden.class, () ->
+      this.gameService.play(wrongSecret, dto)
     );
   }
 
@@ -423,8 +415,7 @@ class GameServiceTests extends AbstractServiceTests {
   }
 
   private Game getGame(Long gameId) {
-    return this.gameRepository.findById(gameId)
-      .orElseThrow(() ->
+    return this.gameRepository.findById(gameId).orElseThrow(() ->
         new IllegalStateException(
           String.format(
             "Could not find game with ID %s in the database",

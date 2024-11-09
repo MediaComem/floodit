@@ -68,9 +68,9 @@ public final class Generate {
       );
     }
 
-    return Stream
-      .generate(generator)
-      .limit(FAKER.number().numberBetween(min, max));
+    return Stream.generate(generator).limit(
+      FAKER.number().numberBetween(min, max)
+    );
   }
 
   private Generate() {}

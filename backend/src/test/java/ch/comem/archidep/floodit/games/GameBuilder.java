@@ -14,8 +14,10 @@ public class GameBuilder implements Builder<Game> {
   private LocalDateTime createdAt;
 
   public GameBuilder(CreateGameDtoBuilder dtoBuilder, long seed) {
-    this.dtoBuilder =
-      Objects.requireNonNull(dtoBuilder, "DTO builder is required");
+    this.dtoBuilder = Objects.requireNonNull(
+      dtoBuilder,
+      "DTO builder is required"
+    );
     this.seed = seed;
   }
 

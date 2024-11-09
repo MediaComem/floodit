@@ -28,9 +28,9 @@ public class MoveController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public MoveDto playMove(
-    @RequestHeader(
-      HttpHeaders.AUTHORIZATION
-    ) Optional<String> authorizationHeader,
+    @RequestHeader(HttpHeaders.AUTHORIZATION) Optional<
+      String
+    > authorizationHeader,
     @Valid @RequestBody PlayDto requestBody
   ) {
     return this.gameService.play(

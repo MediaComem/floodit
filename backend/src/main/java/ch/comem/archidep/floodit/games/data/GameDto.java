@@ -33,20 +33,25 @@ public class GameDto {
   ) {
     this.id = id;
     this.state = Objects.requireNonNull(state, "State is required");
-    this.playerName =
-      Objects.requireNonNull(playerName, "Player name is required");
+    this.playerName = Objects.requireNonNull(
+      playerName,
+      "Player name is required"
+    );
     this.boardWidth = boardWidth;
     this.boardHeight = boardHeight;
     this.numberOfColors = numberOfColors;
     this.maxMoves = maxMoves;
-    this.moves =
-      Collections.unmodifiableList(
-        Objects.requireNonNull(moves, "Moves are required")
-      );
-    this.createdAt =
-      Objects.requireNonNull(createdAt, "Creation date is required");
-    this.updatedAt =
-      Objects.requireNonNull(updatedAt, "Last modification date is required");
+    this.moves = Collections.unmodifiableList(
+      Objects.requireNonNull(moves, "Moves are required")
+    );
+    this.createdAt = Objects.requireNonNull(
+      createdAt,
+      "Creation date is required"
+    );
+    this.updatedAt = Objects.requireNonNull(
+      updatedAt,
+      "Last modification date is required"
+    );
   }
 
   public long getId() {
