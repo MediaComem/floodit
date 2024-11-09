@@ -1,6 +1,6 @@
 # Flood It
 
-[![build](https://github.com/AlphaHydrae/floodit/actions/workflows/build.yml/badge.svg)](https://github.com/AlphaHydrae/floodit/actions/workflows/build.yml)
+[![build](https://github.com/MediaComem/floodit/actions/workflows/build.yml/badge.svg)](https://github.com/MediaComem/floodit/actions/workflows/build.yml)
 [![license](https://img.shields.io/github/license/MediaComem/floodit)](https://opensource.org/licenses/MIT)
 
 A web game developed with [Spring Boot][spring-boot] in [Java][java] for the
