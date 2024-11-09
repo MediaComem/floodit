@@ -17,7 +17,7 @@
     "prettier-plugin-java": "^2.6.5"
   },
   "engines": {
-    "node": ">= 18",
+    "node": ">= 22",
     "npm": ">= 7"
   }
 }

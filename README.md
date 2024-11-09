@@ -24,14 +24,14 @@ backend and [Angular][angular] in [JavaScript][js] for the frontend.
 
 To run the application, you will need:
 
-- The [Java][java] 17 JRE
-- [PostgreSQL][postgresql] 12, 13, 14 or 15
+- The [Java][java] 21 JRE
+- [PostgreSQL][postgresql] 12, 13, 14, 15, 16 or 17
 
 Additionally, to compile the backend and frontend, you will need:
 
-- The [Java][java] 17 JDK
-- [Maven][maven] 3.8
-- [Node.js][node] 18
+- The [Java][java] 21 JDK
+- [Maven][maven] 3+
+- [Node.js][node] 22
 
 ## Initial setup
 
