@@ -10,6 +10,20 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:17
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: floodit
+          POSTGRES_USER: floodit
+          POSTGRES_PASSWORD: floodit
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       # https://github.com/actions/checkout
       - name: Checkout the repository
@@ -54,6 +68,11 @@ jobs:
 
       - name: Test the backend application
         env:
+          FLOODIT_TEST_DATABASE_HOST: localhost
+          FLOODIT_TEST_DATABASE_PORT: 5432
+          FLOODIT_TEST_DATABASE_NAME: floodit
+          FLOODIT_TEST_DATABASE_USERNAME: floodit
+          FLOODIT_TEST_DATABASE_PASSWORD: floodit
           JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
