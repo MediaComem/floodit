@@ -28,6 +28,11 @@ jobs:
           which java
           java -version
 
+      - name: Show Maven version
+        run: |
+          which mvn
+          mvn --version
+
       - name: Install Node.js with asdf
         run: |
           asdf plugin add nodejs
