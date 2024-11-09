@@ -58,6 +58,11 @@ jobs:
           which node
           node --version
 
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          mvn dependency:resolve dependency:resolve-plugins initialize
+
       - name: Install frontend dependencies
         run: |
           npm ci
