@@ -21,14 +21,18 @@ jobs:
         with:
           asdf_branch: v0.14.1
 
-      - name: Install Java with asdf
+      - id: install-java
+        name: Install Java with asdf
         run: |
           asdf plugin add java
           asdf install java
           which java
           java -version
+          echo $JAVA_HOME
 
       - name: Show Maven version
+        env:
+          JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           which mvn
           mvn --version
