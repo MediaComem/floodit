@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.isA;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import ch.comem.archidep.floodit.games.data.CreateGameDto;
 import ch.comem.archidep.floodit.games.data.GameDto;
@@ -193,7 +193,7 @@ class GameServiceTests extends AbstractServiceTests {
       }
     );
 
-    assertThat(exception.getStatus(), is(HttpStatus.NOT_FOUND));
+    assertThat(exception.getStatusCode(), is(HttpStatus.NOT_FOUND));
   }
 
   @Test
@@ -230,7 +230,7 @@ class GameServiceTests extends AbstractServiceTests {
       }
     );
 
-    assertThat(exception.getStatus(), is(HttpStatus.NOT_FOUND));
+    assertThat(exception.getStatusCode(), is(HttpStatus.NOT_FOUND));
   }
 
   @Test

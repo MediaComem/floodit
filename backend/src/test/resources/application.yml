@@ -6,7 +6,6 @@ spring:
   flyway:
     enabled: false
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
         format_sql: true
