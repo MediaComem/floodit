@@ -1,3 +1,4 @@
 # https://asdf-vm.com
+
 java openjdk-21.0.2
-nodejs 18.20.4
+nodejs 22.11.0
