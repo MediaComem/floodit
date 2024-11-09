@@ -5,7 +5,7 @@ import { GameService } from './game.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ContinueCurrentGameGuard  {
+export class ContinueCurrentGameGuard {
   constructor(private readonly gameService: GameService) {}
 
   canActivate(): boolean {
