@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { random } from 'lodash-es';
 import { ToastrService } from 'ngx-toastr';
 import { colors } from 'src/app/games/game.constants';

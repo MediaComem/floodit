@@ -18,7 +18,7 @@ export class GameBoardComponent implements OnInit, OnChanges {
 
   boardColors!: string[][];
 
-  #revealedPositions: Array<[number, number]>;
+  readonly #revealedPositions: Array<[number, number]>;
 
   constructor() {
     this.#revealedPositions = [];

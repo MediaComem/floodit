@@ -78,21 +78,20 @@ public class Game {
   Game(CreateGameDto dto) {
     this();
     Objects.requireNonNull(dto, "DTO is required");
-    this.secret = RandomStringUtils.randomAlphanumeric(255);
+    this.secret = RandomStringUtils.secureStrong().nextAlphanumeric(255);
     this.state = GameState.ONGOING;
-    this.playerName = Objects.requireNonNull(
-      dto.playerName(),
-      "Player name is required"
-    );
+    this.playerName =
+      Objects.requireNonNull(dto.playerName(), "Player name is required");
     this.boardWidth = dto.boardWidth();
     this.boardHeight = dto.boardHeight();
     this.numberOfColors = dto.numberOfColors();
     this.maxMoves = dto.maxMoves();
-    this.seed = Board.generateSeed(
-      dto.boardWidth(),
-      dto.boardHeight(),
-      dto.numberOfColors()
-    );
+    this.seed =
+      Board.generateSeed(
+        dto.boardWidth(),
+        dto.boardHeight(),
+        dto.numberOfColors()
+      );
   }
 
   Game() {
