@@ -25,13 +25,17 @@ jobs:
         run: |
           asdf plugin add java
           asdf install java
+          which java
+          java -version
 
       - name: Install Node.js with asdf
         run: |
           asdf plugin add nodejs
           asdf install nodejs
+          which node
+          node --version
 
-      - name: Install project dependencies
+      - name: Install frontend dependencies
         run: |
           npm ci
 
