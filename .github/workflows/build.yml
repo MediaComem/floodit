@@ -10,9 +10,12 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        postgres: [12, 13, 14, 15, 16, 17]
     services:
       postgres:
-        image: postgres:17
+        image: postgres:${{ matrix.postgres }}
         ports:
           - 5432:5432
         env:
