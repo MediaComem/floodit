@@ -59,9 +59,11 @@ jobs:
           node --version
 
       - name: Install backend dependencies
+        env:
+          JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
-          mvn dependency:resolve dependency:resolve-plugins initialize
+          mvn --batch-mode dependency:resolve dependency:resolve-plugins initialize
 
       - name: Install frontend dependencies
         run: |
@@ -81,14 +83,14 @@ jobs:
           JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
-          mvn clean test
+          mvn --batch-mode clean test
 
       - name: Build the backend application
         env:
           JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
-          mvn clean install -Pskip-test
+          mvn --batch-mode clean install -Pskip-test
 
       - name: Build the frontend application
         run: |
