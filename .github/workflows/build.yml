@@ -53,11 +53,15 @@ jobs:
           npm run format
 
       - name: Test the backend application
+        env:
+          JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
           mvn clean test
 
       - name: Build the backend application
+        env:
+          JAVA_HOME: ${{ steps.install-java.outputs.JAVA_HOME }}
         run: |
           cd backend
           mvn clean install
