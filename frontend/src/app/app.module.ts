@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,28 +17,21 @@ import { RegistrationComponent } from './pages/dashboard/registration/registrati
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
-@NgModule({
-  bootstrap: [AppComponent],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    CurrentGameComponent,
-    LayoutComponent,
-    NavbarComponent,
-    NewGameCardComponent,
-    PreviousGamesComponent,
-    GameBoardComponent,
-    RegistrationComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    ToastrModule.forRoot()
-  ],
-  providers: []
-})
+@NgModule({ bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        CurrentGameComponent,
+        LayoutComponent,
+        NavbarComponent,
+        NewGameCardComponent,
+        PreviousGamesComponent,
+        GameBoardComponent,
+        RegistrationComponent
+    ], imports: [AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        ToastrModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
