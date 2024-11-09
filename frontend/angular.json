@@ -85,10 +85,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "floodit:build:production"
+              "buildTarget": "floodit:build:production"
             },
             "development": {
-              "browserTarget": "floodit:build:development"
+              "buildTarget": "floodit:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -99,7 +99,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "floodit:build"
+            "buildTarget": "floodit:build"
           }
         }
       }
